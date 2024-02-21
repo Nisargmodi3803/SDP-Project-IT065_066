@@ -1,0 +1,21 @@
+.profileDetails{
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+}
+
+.profileDetails button
+{
+    margin: 25px;
+    padding: 10px;
+    width: 150px;
+    background-color: skyblue;
+    border: 1px solid;
+    cursor: pointer;
+    border-radius:25px
+}
+.photo{
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+}
