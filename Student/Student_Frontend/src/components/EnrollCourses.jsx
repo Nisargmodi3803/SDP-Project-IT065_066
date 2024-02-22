@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,6 +12,8 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 // Container component to hold the cards in a row
 const CoursesRow = () => {
+    const [enrolledCourses, setEnrolledCourses] = useState([])
+
     let storedStudentDetails = localStorage.getItem('student')
     try {
         storedStudentDetails = JSON.parse(storedStudentDetails);
@@ -20,7 +22,6 @@ const CoursesRow = () => {
     }
     const studnetId = storedStudentDetails._id;
 
-    const [endrolledCourses,setEndrolledCourses] = useState([])
     useEffect(() => {
         const fetchData = async (studnetId) => {
             try {
@@ -29,7 +30,9 @@ const CoursesRow = () => {
                     throw new Error('Failed to fetch data');
                 }
                 const data = await response.json();
-                setEndrolledCourses(data)
+                setEnrolledCourses(data)
+                console.log(Array.isArray(enrolledCourses))
+                console.log(data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -39,18 +42,39 @@ const CoursesRow = () => {
 
     }, []);
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Courses
-                title="Web Design"
-                description="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica."
-                image="https://www.google.com/imgres?imgurl=https%3A%2F%2Fnearlearn.com%2Fpublic%2Fimages%2Fpython-training-for-beginners.jpg&tbnid=tgmLr-IWuPBmQM&vet=12ahUKEwjNrZHww7CEAxWzTGwGHUcHB_sQMygbegUIARCuAQ..i&imgrefurl=https%3A%2F%2Fnearlearn.com%2Fpython-online-training-usa&docid=gaFrd5se0BCg2M&w=500&h=500&q=image%20for%20python%20course&ved=2ahUKEwjNrZHww7CEAxWzTGwGHUcHB_sQMygbegUIARCuAQ"
-            />
-        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
+        {/* {Array.isArray(enrolledCourses) ? (
+            enrolledCourses.map((enrolledCourse) => (
+                <Courses
+                    key={enrolledCourse._id}
+                    id={enrolledCourse._id}
+                    title={enrolledCourse.name}
+                    description={enrolledCourse.description}
+                    image={enrolledCourse.image}
+                />
+            ))
+        ) : (
+            <Typography>No courses found</Typography>
+        )} */}
+        {/* {
+            enrolledCourses.forEach((enrollCourse)=>(
+                enrollCourse.map((course)=>(
+                    <Courses
+                        key={course._id}
+                        id={course._id}
+                        title={course.name}
+                        description={course.description}
+                        image={course.image}
+                    />
+                ))
+            ))
+        } */}
+    </div>
     );
 };
 
 
-const Courses = ({ title, description, image }) => {
+const Courses = ({ id, title, description, image }) => {
     const navigate = useNavigate()
     return (
         <Card sx={{ maxWidth: 345 }}>

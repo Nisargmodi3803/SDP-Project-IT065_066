@@ -19,7 +19,7 @@ export default function Nav() {
             <li><Link to='/home'>Home</Link></li>
             <li><Link to='/allcourses'>All courses</Link></li>
             <li><Link to='/searchCourse'>Search Course</Link></li>
-            <li><Link to='/endrollments'>Endrollments</Link></li>
+            <li><Link to='/enrollments'>Enrollments</Link></li>
             <li><Link to='/notes'>Notes</Link></li>
             <li><Link to='/profile'>Profile</Link></li>
             <li><Link onClick={logout} to='/login'>Logout</Link></li>

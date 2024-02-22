@@ -8,7 +8,7 @@ import privateComponent from './components/privateComponent';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Profile from './components/Profile';
 import AllCourses from './components/AllCourses'
-import EndrollCourses from './components/EndrollCourses'
+import EnrollCourses from './components/EnrollCourses'
 import Lectures from './components/Lectures';
 import SearchCourse from './components/searchCourse';
 
@@ -24,7 +24,7 @@ function App() {
           <Route path='/logout' element={<h1>Logout component</h1>}></Route>
           <Route path='/allCourses' element={<AllCourses/>}></Route>
           <Route path='/notes' element={<h1>Notes component</h1>}></Route>
-          <Route path='/endrollments' element={<EndrollCourses/>}></Route>
+          <Route path='/enrollments' element={<EnrollCourses/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/endrollments/watch' element={<Lectures />} />
           <Route path='/searchCourse' element={<SearchCourse/>}/>

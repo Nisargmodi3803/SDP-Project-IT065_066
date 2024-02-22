@@ -12,6 +12,13 @@ export default function SearchCourse() {
   const [searchResult, setSearchResult] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
+  let storedStudentDetails = localStorage.getItem('student')
+  try {
+    storedStudentDetails = JSON.parse(storedStudentDetails);
+  } catch (error) {
+    console.log(error)
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,6 +58,31 @@ export default function SearchCourse() {
     }
   };
 
+  const enrollCourse = async (courseId) => {
+    console.log('Clicked on course with ID:', courseId);
+
+    const studentId = storedStudentDetails._id;
+
+    try {
+      const enrollResponse = await fetch(`http://localhost:4400/enrollCourse/${studentId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ courseId }) // Pass courseId in the request body
+      });
+
+      if (!enrollResponse.ok) {
+        throw new Error('Failed to enroll in the course');
+      }
+
+      const responseData = await enrollResponse.json();
+      console.log(responseData);
+
+    } catch (error) {
+      console.error('Error enrolling in the course:', error);
+    }
+  };
   return (
     <div>
       <TextField
@@ -64,24 +96,26 @@ export default function SearchCourse() {
       </Button>
       <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
         {Array.isArray(searchResult) && searchResult.length > 0 ? (
-          searchResult.map((course) => ( //If any course availabe then this
+          searchResult.map((course) => (
             <Courses
               key={course._id}
               id={course._id}
               title={course.name}
               description={course.description}
               image={course.image}
+              onClick={() => enrollCourse(course._id)}
             />
           ))
-        ) : ( // Else This
+        ) : (
           <Typography>No courses found</Typography>
         )}
+
       </div>
     </div>
   );
 };
 
-const Courses = ({ id, title, description, image }) => {
+const Courses = ({ id, title, description, image,onClick }) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 5 }}>
       <CardActionArea>
@@ -101,7 +135,7 @@ const Courses = ({ id, title, description, image }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" startIcon={<SendIcon />}>
+        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={onClick}>
           Enroll Now
         </Button>
       </CardActions>

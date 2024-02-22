@@ -13,7 +13,8 @@ app.get('/showEndrolledCourses/:id', async (req, resp) => {
     try {
         let studentId = req.params.id;
         const stud = await student.findOne({_id:studentId})
-        const studEndrolledCourse = stud.endrolledCourses
+        const studEndrolledCourse = stud.enrolledCourses
+        console.log(studEndrolledCourse)
         resp.status(200).json({message:"All Endrolled Courses Display Successfully",studEndrolledCourse})
     } catch (error) {
         console.error(error);

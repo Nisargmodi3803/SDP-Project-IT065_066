@@ -1,0 +1,5 @@
+  // const updatedStudent = await Student.findByIdAndUpdate(
+        //     studentId, 
+        //     { $addToSet: { enrolledCourses: courseData } },
+        //     { new: true }
+        // );

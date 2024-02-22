@@ -10,13 +10,13 @@ const studentSchema = new mongoose.Schema(
         city: String,
         state: String,
         country: String,
-        endrolledCourses: [{
-            // name: String,
-            // link: String,
-            // image: String,
-            // description: String,
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'course'
+        enrolledCourses: [{
+            name: String,
+            link: String,
+            image: String,
+            description: String,
+            // type: mongoose.Schema.Types.ObjectId,
+            // ref: 'course'
         }]
     }
 )
