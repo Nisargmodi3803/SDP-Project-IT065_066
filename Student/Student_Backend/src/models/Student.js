@@ -9,7 +9,7 @@ const studentSchema = new mongoose.Schema(
         phoneNo: String,
         city: String,
         state: String,
-        country: String,
+        image: String,
         enrolledCourses: [{
             name: String,
             link: String,

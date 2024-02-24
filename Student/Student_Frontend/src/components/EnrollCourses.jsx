@@ -20,27 +20,29 @@ const CoursesRow = () => {
     } catch (error) {
         console.log(error)
     }
-    const studnetId = storedStudentDetails._id;
+    const studentId = storedStudentDetails._id;
 
     useEffect(() => {
-        const fetchData = async (studnetId) => {
+        const fetchData = async (studentId) => {
             try {
-                const response = await fetch(`http://localhost:4850/showEndrolledCourses/${studnetId}`);
+                const response = await fetch(`http://localhost:4850/showEndrolledCourses/${studentId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
                 const data = await response.json();
-                setEnrolledCourses(data)
-                console.log(Array.isArray(enrolledCourses))
-                console.log(data)
+                console.log("Fetched data:", data); // Log fetched data
+                setEnrolledCourses(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-
-        fetchData(studnetId);
-
+    
+        console.log("Student ID:", studentId); // Log studentId
+    
+        fetchData(studentId);
+    
     }, []);
+
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
         {/* {Array.isArray(enrolledCourses) ? (
@@ -56,9 +58,8 @@ const CoursesRow = () => {
         ) : (
             <Typography>No courses found</Typography>
         )} */}
-        {/* {
-            enrolledCourses.forEach((enrollCourse)=>(
-                enrollCourse.map((course)=>(
+        {enrolledCourses.length > 0 ? (
+                enrolledCourses.map((course) => (
                     <Courses
                         key={course._id}
                         id={course._id}
@@ -67,8 +68,9 @@ const CoursesRow = () => {
                         image={course.image}
                     />
                 ))
-            ))
-        } */}
+            ) : (
+                <Typography>No courses found</Typography>
+            )}
     </div>
     );
 };

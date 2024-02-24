@@ -12,7 +12,6 @@ export default function Signup() {
     const [phoneNo, setPhoneNo] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
-    const [country, setCountry] = useState("")
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -93,11 +92,6 @@ export default function Signup() {
                     type='text'
                     placeholder='State'
                     value={state} onChange={(e) => setState(e.target.value)} /><br></br>
-
-                <input className='inputBox'
-                    type='text'
-                    placeholder='country'
-                    value={country} onChange={(e) => setCountry(e.target.value)} /><br></br>
 
                 <button onClick={collectData}
                     type='button'>Sign up</button>
