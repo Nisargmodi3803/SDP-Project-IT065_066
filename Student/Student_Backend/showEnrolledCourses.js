@@ -13,9 +13,9 @@ app.get('/showEndrolledCourses/:id', async (req, resp) => {
     try {
         let studentId = req.params.id;
         const stud = await student.findOne({_id:studentId})
-        const studEndrolledCourse = stud.enrolledCourses
-        console.log(studEndrolledCourse)
-        resp.status(200).json({message:"All Endrolled Courses Display Successfully",studEndrolledCourse})
+        const studEnrolledCourse = stud.enrolledCourses
+        console.log(studEnrolledCourse)
+        resp.status(200).json(studEnrolledCourse)
     } catch (error) {
         console.error(error);
         resp.status(500).json({ message: 'Internal Server Error' });

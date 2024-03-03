@@ -78,6 +78,7 @@ export default function SearchCourse() {
 
       const responseData = await enrollResponse.json();
       console.log(responseData);
+      alert("Enroll Course Successful")
 
     } catch (error) {
       console.error('Error enrolling in the course:', error);

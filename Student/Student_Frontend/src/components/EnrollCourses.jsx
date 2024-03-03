@@ -13,52 +13,65 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 // Container component to hold the cards in a row
 const CoursesRow = () => {
     const [enrolledCourses, setEnrolledCourses] = useState([])
-
     let storedStudentDetails = localStorage.getItem('student')
     try {
         storedStudentDetails = JSON.parse(storedStudentDetails);
     } catch (error) {
         console.log(error)
     }
-    const studentId = storedStudentDetails._id;
 
     useEffect(() => {
-        const fetchData = async (studentId) => {
+        const fetchData = async () => {
             try {
+                const storedStudentDetails = JSON.parse(localStorage.getItem('student'));
+                const studentId = storedStudentDetails._id;
                 const response = await fetch(`http://localhost:4850/showEndrolledCourses/${studentId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
                 const data = await response.json();
-                console.log("Fetched data:", data); // Log fetched data
+                console.log("Fetched data:", data);
                 setEnrolledCourses(data);
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-    
-        console.log("Student ID:", studentId); // Log studentId
-    
-        fetchData(studentId);
-    
+
+        fetchData();
+
     }, []);
+
+    const unEnrollCourse = async (courseId) => {
+        console.log('Clicked on course with ID:', courseId);
+        const studentId = storedStudentDetails._id;
+    
+        try {
+            const response = await fetch(`http://localhost:4450/unEnrollCourse/${studentId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ courseId })
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to unenroll from the course');
+            }
+    
+            const data = await response.json();
+            console.log('Successfully unenrolled from the course:', data);
+
+        } catch (error) {
+            console.error('Error unenrolling from the course:', error);
+            // Here you can handle the error, such as displaying an error message to the user
+        }
+    }
+    
 
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
-        {/* {Array.isArray(enrolledCourses) ? (
-            enrolledCourses.map((enrolledCourse) => (
-                <Courses
-                    key={enrolledCourse._id}
-                    id={enrolledCourse._id}
-                    title={enrolledCourse.name}
-                    description={enrolledCourse.description}
-                    image={enrolledCourse.image}
-                />
-            ))
-        ) : (
-            <Typography>No courses found</Typography>
-        )} */}
-        {enrolledCourses.length > 0 ? (
+            {enrolledCourses.length > 0 ? (
                 enrolledCourses.map((course) => (
                     <Courses
                         key={course._id}
@@ -66,17 +79,18 @@ const CoursesRow = () => {
                         title={course.name}
                         description={course.description}
                         image={course.image}
+                        unEnroll={() => unEnrollCourse(course._id)}
                     />
                 ))
             ) : (
                 <Typography>No courses found</Typography>
             )}
-    </div>
+        </div>
     );
 };
 
 
-const Courses = ({ id, title, description, image }) => {
+const Courses = ({ id, title, description, image, unEnroll }) => {
     const navigate = useNavigate()
     return (
         <Card sx={{ maxWidth: 345 }}>
@@ -101,6 +115,12 @@ const Courses = ({ id, title, description, image }) => {
                     navigate('watch')
                 }}>
                     Start Watching
+                </Button>
+            </CardActions>
+
+            <CardActions>
+                <Button size="small" color="primary" startIcon={<SendIcon />} onClick={unEnroll}>
+                    unEnroll
                 </Button>
             </CardActions>
         </Card>
