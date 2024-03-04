@@ -29,10 +29,11 @@ export default function AddCourse() {
       }
 
       const data = await result.json();
-      console.log(data); // Log the response from the server
+      console.log(data); 
+      alert("Course successfully added!!!")
+      window.location.reload();
     } catch (error) {
       console.error('Error:', error.message);
-      // Handle error (e.g., display an error message to the user)
     }
   };
 
