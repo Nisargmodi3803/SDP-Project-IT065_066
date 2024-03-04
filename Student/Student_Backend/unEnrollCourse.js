@@ -13,20 +13,35 @@ const verifyToken = verify.verifyToken;
 
 app.post("/unEnrollCourse/:id", async (req, res) => {
     const studentId = req.params.id;
-    const { courseId } = req.body; // Destructure courseId from the request body
+    const courseId = req.body.courseId; 
+
     try {
-        // Assuming courseId is a string
-        const updatedStudent = await student.findOneAndUpdate(
-            { _id: studentId },
-            { $pull: { endrolledCourses: {_id:courseId } }}, // Pass courseId directly
-            { new: true }
-        );
-        res.status(200).json(updatedStudent);
+        // Find the course by courseId
+        const cour = await course.findById(courseId);
+        if (!cour) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+
+        // Find the student by studentId
+        const stud = await student.findById(studentId);
+        if (!stud) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+        
+        // Unenroll the student from the course
+        stud.enrolledCourses.pull(cour);
+        await stud.save();
+
+        // Respond with a success message
+        res.status(200).json({ message: 'Course unenrolled successfully', updatedStudent: stud.enrolledCourses });
+        console.log('Course unenrolled successfully');
+
     } catch (error) {
-        console.error(error);
+        console.error('Error unenrolling from the course:', error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
 
 
 app.listen(4450, () => {

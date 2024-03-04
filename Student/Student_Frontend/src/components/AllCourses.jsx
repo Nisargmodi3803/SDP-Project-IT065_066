@@ -55,6 +55,7 @@ const AllCourses = () => {
       const responseData = await enrollResponse.json();
       console.log(responseData);
       alert("Enroll Course Successful")
+      window.location.reload();
   
     } catch (error) {
       console.error('Error enrolling in the course:', error);

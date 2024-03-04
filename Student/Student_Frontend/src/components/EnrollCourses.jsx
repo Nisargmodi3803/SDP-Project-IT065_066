@@ -61,10 +61,11 @@ const CoursesRow = () => {
     
             const data = await response.json();
             console.log('Successfully unenrolled from the course:', data);
-
+            alert("Course unenrolled successfull")
+            window.location.reload();
+            
         } catch (error) {
             console.error('Error unenrolling from the course:', error);
-            // Here you can handle the error, such as displaying an error message to the user
         }
     }
     
