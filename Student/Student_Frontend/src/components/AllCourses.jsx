@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Button } from '@mui/material';
+import './AllCourses.css'; // Import the CSS file
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -62,10 +64,8 @@ const AllCourses = () => {
     }
   };
 
-  
-  
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
+    <div className="course-container">
       {Array.isArray(courses) && courses.length > 0 ? (
           courses.map((course) => (
             <Courses
@@ -86,7 +86,7 @@ const AllCourses = () => {
 
 const Courses = ({ id, title, description, image, onClick }) => {
   return (
-    <Card sx={{ maxWidth: 345, margin: 5 }}>
+    <Card className="course-card">
       <CardActionArea >
         <CardMedia
           component="img"
@@ -94,20 +94,24 @@ const Courses = ({ id, title, description, image, onClick }) => {
           image={image}
           alt={title}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        <CardContent className="course-card-content">
+          <Typography gutterBottom variant="h5" component="div" className="course-title">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" className="course-description">
             {description}
           </Typography>
+          <Button 
+            size="small" 
+            color="primary" 
+            startIcon={<SendIcon />}  
+            onClick={onClick} 
+            className="enroll-button"
+          >
+            Enroll Now
+          </Button>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary" startIcon={<SendIcon />}  onClick={onClick}>
-          enroll now
-        </Button>
-      </CardActions>
     </Card>
   );
 };

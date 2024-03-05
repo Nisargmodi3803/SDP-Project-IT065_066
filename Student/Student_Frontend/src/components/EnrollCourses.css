@@ -1,0 +1,32 @@
+/* EnrollCourses.css */
+
+.enrolled-courses-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.course-card {
+    max-width: 345px;
+    margin: 10px;
+}
+
+.course-card-content {
+    padding: 16px;
+}
+
+.course-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.course-description {
+    font-size: 1rem;
+    color: #666;
+}
+
+.course-actions {
+    display: flex;
+    justify-content: space-between;
+}

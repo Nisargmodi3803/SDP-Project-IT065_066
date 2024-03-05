@@ -1,3 +1,4 @@
+// EnrollCourses.jsx
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
@@ -5,19 +6,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
-import Lectures from './Lectures';
-import { useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import './EnrollCourses.css'; // Import the CSS file
 
-// Container component to hold the cards in a row
-const CoursesRow = () => {
-    const [enrolledCourses, setEnrolledCourses] = useState([])
-    let storedStudentDetails = localStorage.getItem('student')
+const EnrollCourses = () => {
+    const [enrolledCourses, setEnrolledCourses] = useState([]);
+    let storedStudentDetails = localStorage.getItem('student');
     try {
         storedStudentDetails = JSON.parse(storedStudentDetails);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 
     useEffect(() => {
@@ -32,20 +31,16 @@ const CoursesRow = () => {
                 const data = await response.json();
                 console.log("Fetched data:", data);
                 setEnrolledCourses(data);
-
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
-
     }, []);
 
     const unEnrollCourse = async (courseId) => {
         console.log('Clicked on course with ID:', courseId);
         const studentId = storedStudentDetails._id;
-    
         try {
             const response = await fetch(`http://localhost:4450/unEnrollCourse/${studentId}`, {
                 method: 'POST',
@@ -54,24 +49,20 @@ const CoursesRow = () => {
                 },
                 body: JSON.stringify({ courseId })
             });
-    
             if (!response.ok) {
                 throw new Error('Failed to unenroll from the course');
             }
-    
             const data = await response.json();
             console.log('Successfully unenrolled from the course:', data);
-            alert("Course unenrolled successfull")
+            alert("Course unenrolled successfully");
             window.location.reload();
-            
         } catch (error) {
             console.error('Error unenrolling from the course:', error);
         }
-    }
-    
+    };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div className="enrolled-courses-container">
             {enrolledCourses.length > 0 ? (
                 enrolledCourses.map((course) => (
                     <Courses
@@ -90,11 +81,10 @@ const CoursesRow = () => {
     );
 };
 
-
 const Courses = ({ id, title, description, image, unEnroll }) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card className="course-card">
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -111,21 +101,16 @@ const Courses = ({ id, title, description, image, unEnroll }) => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => {
-                    navigate('watch')
-                }}>
+            <CardActions className="course-actions">
+                <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => navigate('watch')}>
                     Start Watching
                 </Button>
-            </CardActions>
-
-            <CardActions>
                 <Button size="small" color="primary" startIcon={<SendIcon />} onClick={unEnroll}>
-                    unEnroll
+                    Unenroll
                 </Button>
             </CardActions>
         </Card>
     );
-}
+};
 
-export default CoursesRow;
+export default EnrollCourses;

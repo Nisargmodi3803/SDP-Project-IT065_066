@@ -1,3 +1,4 @@
+// SearchCourse.jsx
 import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -5,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import { Button, CardActionArea, CardActions, TextField } from '@mui/material';
+import './SearchCourse.css'; // Import the CSS file
 
 export default function SearchCourse() {
   const [courses, setCourses] = useState([]);
@@ -84,8 +86,9 @@ export default function SearchCourse() {
       console.error('Error enrolling in the course:', error);
     }
   };
+
   return (
-    <div>
+    <div className="search-course-container">
       <TextField
         label="Search Course"
         value={searchQuery}
@@ -95,7 +98,7 @@ export default function SearchCourse() {
       <Button variant="contained" onClick={handleSearch} disabled={isSearching}>
         Search
       </Button>
-      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
+      <div className="course-list">
         {Array.isArray(searchResult) && searchResult.length > 0 ? (
           searchResult.map((course) => (
             <Courses
@@ -110,13 +113,12 @@ export default function SearchCourse() {
         ) : (
           <Typography>No courses found</Typography>
         )}
-
       </div>
     </div>
   );
-};
+}
 
-const Courses = ({ id, title, description, image,onClick }) => {
+const Courses = ({ id, title, description, image, onClick }) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 5 }}>
       <CardActionArea>
@@ -143,4 +145,3 @@ const Courses = ({ id, title, description, image,onClick }) => {
     </Card>
   );
 };
-

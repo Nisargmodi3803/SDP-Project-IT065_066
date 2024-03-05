@@ -1,0 +1,27 @@
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .course-card {
+    max-width: 345px;
+  }
+  
+  .course-card-content {
+    text-align: center;
+  }
+  
+  .course-title {
+    font-weight: bold;
+  }
+  
+  .course-description {
+    margin-bottom: 10px;
+  }
+  
+  .enroll-button {
+    margin-top: 10px;
+  }
+  
