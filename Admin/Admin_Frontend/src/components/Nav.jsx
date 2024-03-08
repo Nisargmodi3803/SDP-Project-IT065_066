@@ -1,41 +1,43 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import './Nav.css'
+import React from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import './Nav.css';
+import logoImage from '../assets/eLearning.webp'; // Import the logo image
 
-export default function Nav() {
-  const auth = localStorage.getItem('admin')
-  const navigate = useNavigate()
+const Nav = () => {
+  const isLoggedIn = !!localStorage.getItem('admin');
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const logout = () => {
     localStorage.clear();
-    navigate('/')
-  }
+    navigate('/login');
+  };
+
   return (
-    <div>
-
-      {
-        auth ?
-          <ul className='nav-UI'>
-            <li><Link to='/addCourse'>Add Courses</Link></li>
-            <li><Link to='/showAllCourses'>All Courses</Link></li>
-            <li><Link to='/searchCourse'>Search Course</Link></li>
-            {/* <li><Link to='/deleteCourse'>Delete Course</Link></li> */}
-            <li><Link onClick={logout} to='/'>Logout</Link></li>
-            {/* <li><div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-              <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-            </div></li> */}
-          </ul>
-          :
-          <ul className='nav-UI'>
-            <li><Link to='/'>Admin Log in</Link></li>
-            {/* <li><div className="form-check form-switch">
-              <input className="form-check-input" type='checkbox' role='switch' id="flexSwitchCheckDefault" />
-              <label className="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-            </div></li> */}
-          </ul>
-      }
-
-    </div>
-  )
+    <nav className="navbar">
+      <div className="container">
+        <div className="logo">
+          <img src={logoImage} alt="Logo" className="logo-image" />
+          <span className="website-name">Learner's</span>
+        </div>
+        <ul className="nav-menu">
+          {isLoggedIn ? (
+            <>
+              <li><Link to='/addCourse'>Add Courses</Link></li>
+              <li><Link to='/showAllCourses'>All Courses</Link></li>
+              <li><Link to='/searchCourse'>Search Course</Link></li>
+              <li><button onClick={logout}>Logout</button></li>
+            </>
+          ) : (
+            <>
+              <li><Link to='/'>Admin Log in</Link></li>
+            </>
+          )}
+        </ul>
+      </div>
+    </nav>
+  );
 }
+
+export default Nav;
+

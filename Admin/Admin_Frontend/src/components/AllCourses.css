@@ -1,0 +1,100 @@
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+/* 
+  even darker : e0e0e0
+  more darker : d3d3d3
+  */
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.course-card {
+    max-width: 345px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-card-content {
+    text-align: center;
+}
+
+.course-title {
+    font-weight: bold;
+}
+
+.course-description {
+    margin-bottom: 10px;
+}
+
+.delete-button,
+.update-button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.delete-button:hover,
+.update-button:hover {
+    background-color: #0056b3;
+    /* Change the background color on hover */
+}
+
+/* Add this CSS to your existing stylesheet */
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog-content {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.dialog-button {
+    margin: 0 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.dialog-button:hover {
+    background-color: #0056b3;
+}
+
+
+.dialog-text-field-container {
+    margin-bottom: 20px;
+}
+
+.dialog-text-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}

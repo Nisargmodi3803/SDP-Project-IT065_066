@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import { Button, CardActionArea, CardActions, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@mui/material';
+import './AllCourses.css'
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -81,7 +82,7 @@ const AllCourses = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }}>
+    <div className="course-container">
       {Array.isArray(courses) && courses.length > 0 ? (
         courses.map((course) => ( //If any course availabe then this
           <Courses
@@ -125,7 +126,7 @@ const AllCourses = () => {
 
 const Courses = ({ id, title, description, image, handleDelete, handleUpdate }) => {
   return (
-    <Card sx={{ maxWidth: 345, margin: 5 }}>
+    <Card className="course-card">
       <CardActionArea>
         <CardMedia
           component="img"
@@ -134,22 +135,21 @@ const Courses = ({ id, title, description, image, handleDelete, handleUpdate }) 
           alt={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" className="course-title">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" className="course-description">
             {description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => handleDelete(id)}>
+        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => handleDelete(id)} className="delete-button">
           DELETE
         </Button>
       </CardActions>
-
       <CardActions>
-        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => handleUpdate(id)}>
+        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => handleUpdate(id)} className="update-button">
           UPDATE
         </Button>
       </CardActions>
