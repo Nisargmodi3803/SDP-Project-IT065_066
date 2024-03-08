@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './register.css'
+import './signup.css'
 import { useNavigate } from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Register from './register';
 
 export default function Signup() {
     const [email, setEmail] = useState("")
@@ -21,14 +20,6 @@ export default function Signup() {
         }
     }, [])
 
-    // function navigateRegister() {
-    //     <BrowserRouter>
-    //         <Routes>
-    //             <Route path='/register' element={<Register />} />
-    //         </Routes>
-    //     </BrowserRouter>
-    //     navigate('/register')
-
 
     const collectData = async () => {
         if (password.match(reEnterPassword)) {
@@ -45,7 +36,6 @@ export default function Signup() {
 
             localStorage.setItem("student", JSON.stringify(result.result))
             localStorage.setItem("token", JSON.stringify(result.auth))
-            // navigateRegister()
             navigate('/home')
 
         }

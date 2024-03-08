@@ -1,6 +1,5 @@
 import './App.css';
 import Nav from './components/nav';
-import Register from './components/register';
 import Home from './components/home';
 import Login from './components/login';
 import Signup from './components/signup'

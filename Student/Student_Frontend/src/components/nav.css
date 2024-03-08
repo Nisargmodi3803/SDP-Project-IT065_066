@@ -1,8 +1,8 @@
 .nav-UI {
     padding: 5px;
     margin: 0px;
-    background-color: skyblue;
-}
+    background-color: rgba(21, 15, 34, 0.5);
+} 
 
 .nav-UI li {
     display: inline-block;
