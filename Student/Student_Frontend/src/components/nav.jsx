@@ -17,8 +17,8 @@ const Nav = () => {
     <nav className="navbar">
       <div className="container">
         <div className="logo">
-          <img src={logoImage} alt="Logo" className="logo-image" /> {/* Use the logo image */}
-          <span className="website-name">Learner's</span> {/* Include the website name */}
+          <img src={logoImage} alt="Logo" className="logo-image" />
+          <span className="website-name">Learner's</span>
         </div>
         <ul className="nav-menu">
           {isLoggedIn ? (

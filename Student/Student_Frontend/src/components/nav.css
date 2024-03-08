@@ -83,3 +83,10 @@ button:hover {
     height: 3px;
     background-color: #ffd700;
 }
+
+.dark-mode {
+    background-color: #222; /* Dark background color */
+    color: #fff; /* Light text color */
+    /* Add more dark mode styles as needed */
+  }
+  
