@@ -1,4 +1,3 @@
-// SearchCourse.jsx
 import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import { Button, CardActionArea, CardActions, TextField } from '@mui/material';
-import './SearchCourse.css'; // Import the CSS file
+import './SearchCourse.css';
 
 export default function SearchCourse() {
   const [courses, setCourses] = useState([]);
@@ -71,7 +70,7 @@ export default function SearchCourse() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ courseId }) // Pass courseId in the request body
+        body: JSON.stringify({ courseId })
       });
 
       if (!enrollResponse.ok) {
