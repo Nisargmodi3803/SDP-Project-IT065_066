@@ -5,8 +5,8 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
-import { Button } from '@mui/material';
-import './AllCourses.css'; // Import the CSS file
+import { Button, CardActions } from '@mui/material';
+import './AllCourses.css';
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -38,9 +38,9 @@ const AllCourses = () => {
 
   const enrollCourse = async (courseId) => {
     console.log('Clicked on course with ID:', courseId);
-    
+
     const studentId = storedStudentDetails._id;
-  
+
     try {
       const enrollResponse = await fetch(`http://localhost:4400/enrollCourse/${studentId}`, {
         method: 'POST',
@@ -49,24 +49,25 @@ const AllCourses = () => {
         },
         body: JSON.stringify({ courseId }) // Pass courseId in the request body
       });
-  
+
       if (!enrollResponse.ok) {
         throw new Error('Failed to enroll in the course');
       }
-  
+
       const responseData = await enrollResponse.json();
       console.log(responseData);
       alert("Enroll Course Successful")
       window.location.reload();
-  
+
     } catch (error) {
       console.error('Error enrolling in the course:', error);
     }
   };
 
   return (
-    <div className="course-container">
-      {Array.isArray(courses) && courses.length > 0 ? (
+    <div className='allcourse-page'>
+      <div className="course-container">
+        {Array.isArray(courses) && courses.length > 0 ? (
           courses.map((course) => (
             <Courses
               key={course._id}
@@ -80,7 +81,9 @@ const AllCourses = () => {
         ) : (
           <Typography>No courses found</Typography>
         )}
+      </div>
     </div>
+
   );
 };
 
@@ -95,23 +98,19 @@ const Courses = ({ id, title, description, image, onClick }) => {
           alt={title}
         />
         <CardContent className="course-card-content">
-          <Typography gutterBottom variant="h5" component="div" className="course-title">
+          <Typography variant="h5" component="div" className="course-title">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary" className="course-description">
             {description}
           </Typography>
-          <Button 
-            size="small" 
-            color="primary" 
-            startIcon={<SendIcon />}  
-            onClick={onClick} 
-            className="enroll-button"
-          >
-            Enroll Now
-          </Button>
         </CardContent>
       </CardActionArea>
+      <CardActions className="course-actions">
+        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={onClick}>
+          Enroll Now
+        </Button>
+      </CardActions>
     </Card>
   );
 };

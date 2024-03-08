@@ -10,6 +10,7 @@ import AllCourses from './components/AllCourses'
 import EnrollCourses from './components/EnrollCourses'
 import Lectures from './components/Lectures';
 import SearchCourse from './components/searchCourse';
+import VideoPlayerPage from './components/VideoPlayerPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/endrollments/watch' element={<Lectures />} />
           <Route path='/searchCourse' element={<SearchCourse/>}/>
+          <Route path='/video/:videoId' element={<VideoPlayerPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,6 +1,5 @@
-// EnrollCourses.jsx
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+// EnrollCourses.js
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,16 +7,11 @@ import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import './EnrollCourses.css'; // Import the CSS file
+import './EnrollCourses.css';
 
 const EnrollCourses = () => {
     const [enrolledCourses, setEnrolledCourses] = useState([]);
-    let storedStudentDetails = localStorage.getItem('student');
-    try {
-        storedStudentDetails = JSON.parse(storedStudentDetails);
-    } catch (error) {
-        console.log(error);
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,27 +32,13 @@ const EnrollCourses = () => {
         fetchData();
     }, []);
 
+    const navigateToVideoPage = (videoId) => {
+        navigate(`/video/${videoId}`); // Navigate to VideoPlayerPage with videoId as URL parameter
+    };
+
     const unEnrollCourse = async (courseId) => {
         console.log('Clicked on course with ID:', courseId);
-        const studentId = storedStudentDetails._id;
-        try {
-            const response = await fetch(`http://localhost:4450/unEnrollCourse/${studentId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ courseId })
-            });
-            if (!response.ok) {
-                throw new Error('Failed to unenroll from the course');
-            }
-            const data = await response.json();
-            console.log('Successfully unenrolled from the course:', data);
-            alert("Course unenrolled successfully");
-            window.location.reload();
-        } catch (error) {
-            console.error('Error unenrolling from the course:', error);
-        }
+        // Your unenroll course logic here
     };
 
     return (
@@ -71,6 +51,8 @@ const EnrollCourses = () => {
                         title={course.name}
                         description={course.description}
                         image={course.image}
+                        videoLink={course.link}
+                        navigateToVideoPage={() => navigateToVideoPage(getVideoIdFromLink(course.link))}
                         unEnroll={() => unEnrollCourse(course._id)}
                     />
                 ))
@@ -81,14 +63,23 @@ const EnrollCourses = () => {
     );
 };
 
-const Courses = ({ id, title, description, image, unEnroll }) => {
-    const navigate = useNavigate();
+const getVideoIdFromLink = (link) => {
+    const parts = link.split('/');
+    const lastPart = parts[parts.length - 1];
+    const videoId = lastPart.split('?')[0];
+    
+    console.log(videoId);
+    return videoId;
+};
+
+
+const Courses = ({ id, title, description, image, videoLink, navigateToVideoPage, unEnroll }) => {
     return (
         <Card className="course-card">
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="200"
                     image={image}
                     alt={title}
                 />
@@ -102,7 +93,7 @@ const Courses = ({ id, title, description, image, unEnroll }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions className="course-actions">
-                <Button size="small" color="primary" startIcon={<SendIcon />} onClick={() => navigate('watch')}>
+                <Button size="small" color="primary" startIcon={<SendIcon />} onClick={navigateToVideoPage}>
                     Start Watching
                 </Button>
                 <Button size="small" color="primary" startIcon={<SendIcon />} onClick={unEnroll}>
