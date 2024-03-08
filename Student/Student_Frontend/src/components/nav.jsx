@@ -33,8 +33,8 @@ const Nav = () => {
             </>
           ) : (
             <>
-              <li><NavLink to='/login' activeClassName="active">Log in</NavLink></li>
-              <li><NavLink to='/signup' activeClassName="active">Sign up</NavLink></li>
+              <li><NavLink to='/login' activeClassName="active" st>Log in</NavLink></li>
+              <li><NavLink to='/' activeClassName="active">Sign up</NavLink></li>
             </>
           )}
         </ul>

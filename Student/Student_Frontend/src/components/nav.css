@@ -17,16 +17,16 @@
 }
 
 .logo-image {
-    height: 60px; /* Increase the height of the logo */
+    height: 50px;
     width: auto;
     margin-right: 15px;
     border-radius: 50%;
 }
 
 .website-name {
-    font-size: 1.5em; /* Increase the font size of the website name */
+    font-size: 1.5em;
     font-weight: bold;
-    margin-right: 15px; /* Increase the margin for spacing */
+    margin-right: 15px;
 }
 
 .nav-menu {
@@ -42,7 +42,7 @@
 }
 
 .nav-menu li:last-child {
-    margin-right: 0;
+    margin-right: 20px;
 }
 
 .nav-menu li a {
