@@ -33,7 +33,7 @@ const EnrollCourses = () => {
     }, []);
 
     const navigateToVideoPage = (videoId) => {
-        navigate(`/video/${videoId}`); // Navigate to VideoPlayerPage with videoId as URL parameter
+        navigate(`/video/${videoId}`); // navigate to videoplayerpage with videoId parameter
     };
 
     const unEnrollCourse = async (courseId) => {

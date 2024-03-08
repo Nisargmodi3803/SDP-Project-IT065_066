@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VideoPlayerPage = ({ videoId }) => {
+const VideoPlayerPage = ({ videoId }) => { //videoId coming from parmeter
     return (
         <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <iframe
