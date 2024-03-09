@@ -27,7 +27,7 @@ const Nav = () => {
               <li><NavLink to='/allcourses' activeClassName="active">All Courses</NavLink></li>
               <li><NavLink to='/searchCourse' activeClassName="active">Search Course</NavLink></li>
               <li><NavLink to='/enrollments' activeClassName="active">Enrollments</NavLink></li>
-              <li><NavLink to='/notes' activeClassName="active">Notes</NavLink></li>
+              {/* <li><NavLink to='/notes' activeClassName="active">Notes</NavLink></li> */}
               <li><NavLink to='/profile' activeClassName="active">Profile</NavLink></li>
               <li><button onClick={logout}>Logout</button></li>
             </>

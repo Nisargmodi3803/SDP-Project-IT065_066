@@ -12,6 +12,12 @@ import './EnrollCourses.css';
 const EnrollCourses = () => {
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const navigate = useNavigate();
+    let storedStudentDetails = localStorage.getItem('student')
+    try {
+        storedStudentDetails = JSON.parse(storedStudentDetails);
+    } catch (error) {
+        console.log(error)
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,8 +44,30 @@ const EnrollCourses = () => {
 
     const unEnrollCourse = async (courseId) => {
         console.log('Clicked on course with ID:', courseId);
-        // Your unenroll course logic here
-    };
+        const studentId = storedStudentDetails._id;
+
+        try {
+            const response = await fetch(`http://localhost:4450/unEnrollCourse/${studentId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ courseId })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to unenroll from the course');
+            }
+
+            const data = await response.json();
+            console.log('Successfully unenrolled from the course:', data);
+            alert("Course unenrolled successfull")
+            window.location.reload();
+
+        } catch (error) {
+            console.error('Error unenrolling from the course:', error);
+        }
+    }
 
     return (
         <div className="enrolled-courses-container">
@@ -67,7 +95,7 @@ const getVideoIdFromLink = (link) => {
     const parts = link.split('/');
     const lastPart = parts[parts.length - 1];
     const videoId = lastPart.split('?')[0];
-    
+
     console.log(videoId);
     return videoId;
 };

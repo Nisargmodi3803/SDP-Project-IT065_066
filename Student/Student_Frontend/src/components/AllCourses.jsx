@@ -107,7 +107,7 @@ const Courses = ({ id, title, description, image, onClick }) => {
         </CardContent>
       </CardActionArea>
       <CardActions className="course-actions">
-        <Button size="small" color="primary" startIcon={<SendIcon />} onClick={onClick}>
+        <Button className='enroll-button' size="small" color="primary" startIcon={<SendIcon />} onClick={onClick}>
           Enroll Now
         </Button>
       </CardActions>

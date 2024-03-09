@@ -38,22 +38,25 @@ export default function Login() {
   }
 
   return (
-    <div className='loginPage'>
-      <form onSubmit={(e) => e.preventDefault}>
-        <input className='inputBox'
-          type='email'
-          placeholder='Enter your Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} /><br></br>
+    <div className='container-login'>
+      <div className='loginPage'>
+        <form onSubmit={(e) => e.preventDefault}>
+          <input className='inputBox'
+            type='email'
+            placeholder='Enter your Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} /><br></br>
 
-        <input className='inputBox'
-          type='password'
-          placeholder='Enter Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} /><br></br>
-        <button 
-        onClick={handleLogin} type='button'>Log in</button>
-      </form>
+          <input className='inputBox'
+            type='password'
+            placeholder='Enter Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} /><br></br>
+          <button
+            onClick={handleLogin} type='button'>Log in</button>
+        </form>
+      </div>
     </div>
+
   )
 }
