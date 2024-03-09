@@ -3,7 +3,6 @@ import Nav from './components/nav';
 import Home from './components/home';
 import Login from './components/login';
 import Signup from './components/signup'
-import privateComponent from './components/privateComponent';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Profile from './components/Profile';
 import AllCourses from './components/AllCourses'
