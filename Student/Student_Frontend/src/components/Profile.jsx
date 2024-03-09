@@ -20,27 +20,26 @@ export default function Profile() {
   }
 
   return (
-    <div>
-      <div className='userDetails'>
-        <aside>
-          <div className='profileDetails'>
-            <h3>Name : {storedStudentDetails.name}</h3>
-            <h3>Email : {storedStudentDetails.email}</h3>
-            <h3>Phone No. : {storedStudentDetails.phoneNo}</h3>
-            <h3>City : {storedStudentDetails.city}</h3>
-            <h3>State : {storedStudentDetails.state}</h3>
-            <button onClick={() => {
-              <BrowserRouter>
-                <Routes>
-                  <Route path='/profile/editProfile' element={<EditProfile />}></Route>
-                </Routes>
-              </BrowserRouter>
-              navigate('/profile/editProfile')
+    <div className='profile-container'>
+      <aside>
+        <div className='profileDetails'>
+          <h3>Name : {storedStudentDetails.name}</h3>
+          <h3>Email : {storedStudentDetails.email}</h3>
+          <h3>Phone No. : {storedStudentDetails.phoneNo}</h3>
+          <h3>City : {storedStudentDetails.city}</h3>
+          <h3>State : {storedStudentDetails.state}</h3>
+          <button onClick={() => {
+            <BrowserRouter>
+              <Routes>
+                <Route path='/profile/editProfile' element={<EditProfile />}></Route>
+              </Routes>
+            </BrowserRouter>
+            navigate('/profile/editProfile')
 
-            }}>Edit profile</button>
-          </div>
-        </aside>
-        {/* <aside>
+          }}>Edit profile</button>
+        </div>
+      </aside>
+      {/* <aside>
           <div className='photo'>
             <Avatar
               size="300"
@@ -61,7 +60,6 @@ export default function Profile() {
           </div>
         </aside> */}
 
-      </div>
     </div>
   )
 }

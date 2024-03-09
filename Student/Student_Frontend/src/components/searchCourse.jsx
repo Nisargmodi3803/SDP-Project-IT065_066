@@ -87,33 +87,36 @@ export default function SearchCourse() {
   };
 
   return (
-    <div className="search-course-container">
-      <TextField
-        label="Search Course"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        fullWidth
-      />
-      <Button variant="contained" onClick={handleSearch} disabled={isSearching}>
-        Search
-      </Button>
-      <div className="course-list">
-        {Array.isArray(searchResult) && searchResult.length > 0 ? (
-          searchResult.map((course) => (
-            <Courses
-              key={course._id}
-              id={course._id}
-              title={course.name}
-              description={course.description}
-              image={course.image}
-              onClick={() => enrollCourse(course._id)}
-            />
-          ))
-        ) : (
-          <Typography>No courses found</Typography>
-        )}
+    <div className='searchpage-container'>
+      <div className="search-course-container">
+        <TextField
+          label="Search Course"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          fullWidth
+        />
+        <Button variant="contained" onClick={handleSearch} disabled={isSearching}>
+          Search
+        </Button>
+        <div className="course-list">
+          {Array.isArray(searchResult) && searchResult.length > 0 ? (
+            searchResult.map((course) => (
+              <Courses
+                key={course._id}
+                id={course._id}
+                title={course.name}
+                description={course.description}
+                image={course.image}
+                onClick={() => enrollCourse(course._id)}
+              />
+            ))
+          ) : (
+            <Typography>No courses found</Typography>
+          )}
+        </div>
       </div>
     </div>
+
   );
 }
 

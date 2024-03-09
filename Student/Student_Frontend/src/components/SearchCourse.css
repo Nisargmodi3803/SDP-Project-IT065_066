@@ -1,3 +1,7 @@
+.searchpage-container{
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
 .search-course-container {
   display: flex;
   flex-direction: column;
