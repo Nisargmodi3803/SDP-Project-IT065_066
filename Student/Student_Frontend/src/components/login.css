@@ -9,34 +9,54 @@
     width: 100vw; 
     height: 100vh; 
     display: flex; 
+    padding: 5px;
     justify-content: center;
-    align-items: center;
 }
 
-.loginPage {
-    padding: 20px;
-    max-width: 400px;
-    text-align: center;
-}
+
 
 .inputBox {
+    margin-top: 25px;
     margin-bottom: 20px;
-    padding: 10px 15px;
+    padding: 15px 25px; /* Adjusted padding */
+    font-size: medium; /* Set font size to medium */
     width: 100%;
-    border: 1px solid skyblue;
-    border-radius: 25px;
+    border: 1px solid rgb(70, 141, 169);
+    border-radius: 10px;
     outline: none;
 }
 
-.loginPage button {
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 200px 100px;
+      
+}
+  
+  form {
+    background-color: rgba(255, 255, 255, 0.7);
+  
+    border-radius: 10px;
+    padding: 50px;
+  }
+  
+
+.wrapper button {
     padding: 10px 20px;
-    background-color: skyblue;
+    background-color: rgb(68,152,163);
     border: none;
     cursor: pointer; 
-    border-radius: 25px;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
+    font-size: 20px; 
+}
+.btn{
+    font-size: medium;
 }
 
-.loginPage button:hover {
-    background-color: #00bcd4; 
+.wrapper button:hover {
+    background-color: #e1e6e7; 
 }

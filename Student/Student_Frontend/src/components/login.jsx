@@ -37,8 +37,9 @@ export default function Login() {
 
   return (
     <div className='container-login'>
-      <div className='loginPage'>
-        <form onSubmit={(e) => e.preventDefault}>
+     <div className='wrapper'>
+        <form className='background' onSubmit={(e) => e.preventDefault}>
+          <h1>Log in</h1>
           <input className='inputBox'
             type='email'
             placeholder='Enter your Email'
@@ -50,7 +51,7 @@ export default function Login() {
             placeholder='Enter Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)} /><br></br>
-          <button
+          <button className='btn'
             onClick={handleLogin} type='button'>Log in</button>
         </form>
       </div>

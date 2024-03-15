@@ -1,21 +1,53 @@
-    .registerPage input
-    {
-        display:block;
-        margin-left: 40%;
-        padding:7px;
-        width: 300px;
-        align-items: center;
-        border: 1px solid skyblue;
-        border-radius:25px
-    }
+.registerPage input {
+    display: block;
+    margin: auto; /* Center the inputs horizontally */
+    padding: 10px; /* Adjusted padding */
+    width: 300px;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    outline: none;
+}
+.container-signup {
+    background: url("../assets/LoginBg.jpeg.jpg") center/cover;
+    width: 100vw; 
+    height: 100vh; 
+    display: flex; 
+    padding-top: 4px;
+    justify-content: center;
+}
 
-    .registerPage button
-    {
-        margin: 25px;
-        padding: 10px;
-        width: 150px;
-        background-color: skyblue;
-        border: 1px solid;
-        cursor: pointer;
-        border-radius:25px
-    }
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px 10px;
+}
+
+.wrapper button {
+    margin: 25px;
+    padding: 10 px;
+    width: 150px;
+    background-color: rgb(68,152,163);
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+}
+
+.registerPage button {
+  
+    width: 150px;
+    background-color: rgb(57,129,141);
+    border: 1px solid;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.wrapper button:hover,
+.registerPage button:hover {
+    background-color: #a8c0c5;
+    border-radius: 10px;
+    
+}

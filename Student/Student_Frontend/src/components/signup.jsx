@@ -45,9 +45,12 @@ export default function Signup() {
     }
 
     return (
+        <div className='container-signup'>
+        <div className='wrapper'>
         <div className='registerPage'>
-            <h1>Crack Your Goal with India's top educator</h1>
+            
             <form onSubmit={(e) => e.preventDefault}>
+            <h1>Crack Your Goal with India's top educator</h1>
                 <input className='inputBox'
                     type='email'
                     placeholder='Enter your Email'
@@ -87,5 +90,7 @@ export default function Signup() {
                     type='button'>Sign up</button>
             </form>
         </div>
+    </div>
+    </div>
     )
 }   
