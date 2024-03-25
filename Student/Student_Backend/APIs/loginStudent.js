@@ -1,13 +1,13 @@
 const express = require('express')
 const cors = require('cors')
-const student = require('./src/models/Student')
-require('./src/db/config')
+const student = require('../src/models/Student')
+require('../src/db/config')
 const app = express()
 app.use(express.json())
 app.use(cors())
 const Jwt = require('jsonwebtoken')
 const jwtKey = 'online-learning'
-const verfiy = require('./Middleware/verify')
+const verfiy = require('../Middleware/verify')
 const verfiyToken = verfiy.verfiyToken
 const bcrypt = require('bcrypt')
 

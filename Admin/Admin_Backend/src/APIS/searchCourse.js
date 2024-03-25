@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const course = require('./models/course');
-require('./db/config');
+const course = require('../models/course');
+require('../db/config');
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 const jwtKey = 'Admin-online-learning'; // You might use this key for JWT authentication if needed
-const verfiy = require('./middleware/verify');
+const verfiy = require('../middleware/verify');
 const verfiyToken = verfiy.verfiyToken; // This middleware might be used for JWT verification
 
 app.post("/searchCourse", async (req, resp) => {

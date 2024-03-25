@@ -15,20 +15,8 @@ const studentSchema = new mongoose.Schema(
             link: String,
             image: String,
             description: String,
-            // type: mongoose.Schema.Types.ObjectId,
-            // ref: 'course'
         }]
     }
 )
-
-// studentSchema.pre("save",async function(next)
-// {
-//     if(this.isModified("password"))
-//     {
-//         this.password = await bcrypt.hash(this.password,10)
-//     }
-
-//     next()
-// })
 
 module.exports = mongoose.model("Students", studentSchema)

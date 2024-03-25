@@ -1,14 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-const student = require('./src/models/Student');
-const course = require('./src/models/course');
-require('./src/db/config');
+const student = require('../src/models/Student');
+const course = require('../src/models/course');
+require('../src/db/config');
 const app = express();
 app.use(express.json());
 app.use(cors());
 const Jwt = require('jsonwebtoken');
 const jwtKey = 'online-learning';
-const verify = require('./Middleware/verify');
+const verify = require('../Middleware/verify');
 const verifyToken = verify.verifyToken;
 
 app.post("/unEnrollCourse/:id", async (req, res) => {
