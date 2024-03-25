@@ -18,7 +18,7 @@ const Nav = () => {
       <div className="container">
         <div className="logo">
           <img src={logoImage} alt="Logo" className="logo-image" />
-          <span className="website-name">Learner's</span>
+          <span className="website-name">LearnEase</span>
         </div>
         <ul className="nav-menu">
           {isLoggedIn ? (
@@ -28,7 +28,7 @@ const Nav = () => {
               <li><NavLink to='/searchCourse' activeClassName="active">Search Course</NavLink></li>
               <li><NavLink to='/enrollments' activeClassName="active">Enrollments</NavLink></li>
               {/* <li><NavLink to='/notes' activeClassName="active">Notes</NavLink></li> */}
-              <li><NavLink to='/profile' activeClassName="active">Profile</NavLink></li>
+              {/* <li><NavLink to='/profile' activeClassName="active">Profile</NavLink></li> */}
               <li><button onClick={logout}>Logout</button></li>
             </>
           ) : (

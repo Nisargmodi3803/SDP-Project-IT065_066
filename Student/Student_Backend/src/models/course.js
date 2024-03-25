@@ -7,4 +7,4 @@ const course = new mongoose.Schema({
     description:String
 })
 
-module.exports = mongoose.model("courses", course)
+module.exports = mongoose.model("Courses", course)
