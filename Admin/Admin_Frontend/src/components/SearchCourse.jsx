@@ -27,7 +27,7 @@ export default function SearchCourse() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:4200/showCourses');
+        const response = await fetch('http://localhost:5501/showCourses');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -44,7 +44,7 @@ export default function SearchCourse() {
   const handleSearch = async () => {
     try {
       setIsSearching(true);
-      const response = await fetch('http://localhost:4260/searchCourse', {
+      const response = await fetch('http://localhost:5501/searchCourse', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export default function SearchCourse() {
 
   const handleDelete = async (courseId) => {
     try {
-      const response = await fetch(`http://localhost:4150/deleteCourse/${courseId}`, {
+      const response = await fetch(`http://localhost:5501/deleteCourse/${courseId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
@@ -91,7 +91,7 @@ export default function SearchCourse() {
 
   const handleUpdateFormSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:4160/updateCourse/${selectedCourse._id}`, {
+      const response = await fetch(`http://localhost:5501/updateCourse/${selectedCourse._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -113,32 +113,6 @@ export default function SearchCourse() {
     }
   };
 
-  const enrollCourse = async (courseId) => {
-    console.log('Clicked on course with ID:', courseId);
-
-    const studentId = storedStudentDetails._id;
-
-    try {
-      const enrollResponse = await fetch(`http://localhost:4400/enrollCourse/${studentId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ courseId })
-      });
-
-      if (!enrollResponse.ok) {
-        throw new Error('Failed to enroll in the course');
-      }
-
-      const responseData = await enrollResponse.json();
-      console.log(responseData);
-      alert("Enroll Course Successful")
-
-    } catch (error) {
-      console.error('Error enrolling in the course:', error);
-    }
-  };
 
   return (
     <div className="search-course-container">

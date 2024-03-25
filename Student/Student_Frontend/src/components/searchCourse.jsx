@@ -23,7 +23,7 @@ export default function SearchCourse() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:4200/showCourses');
+        const response = await fetch('http://localhost:5500/showCourses');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -40,7 +40,7 @@ export default function SearchCourse() {
   const handleSearch = async () => {
     try {
       setIsSearching(true);
-      const response = await fetch('http://localhost:4260/searchCourse', {
+      const response = await fetch('http://localhost:5500/searchCourse', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export default function SearchCourse() {
     const studentId = storedStudentDetails._id;
 
     try {
-      const enrollResponse = await fetch(`http://localhost:4400/enrollCourse/${studentId}`, {
+      const enrollResponse = await fetch(`http://localhost:5500/enrollCourse/${studentId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

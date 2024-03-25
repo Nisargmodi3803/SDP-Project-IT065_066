@@ -16,7 +16,7 @@ export default function AddCourse() {
 
   const handleLogin = async () => {
     try {
-      const result = await fetch('http://localhost:4100/addCourse', {
+      const result = await fetch('http://localhost:5501/addCourse', {
         method: 'POST',
         body: JSON.stringify({ name, link, description, image }),
         headers: {

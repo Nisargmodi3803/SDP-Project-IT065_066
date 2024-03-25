@@ -16,7 +16,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      let result = await fetch('http://localhost:4000/login', {
+      let result = await fetch('http://localhost:5501/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: {
@@ -26,9 +26,8 @@ export default function Login() {
 
       if (result.ok) {
         const data = await result.json();
-        if (data.auth) {
-          localStorage.setItem('admin', JSON.stringify(data.stud));
-          localStorage.setItem('token', JSON.stringify(data.auth));
+        if (data) {
+          localStorage.setItem('admin', JSON.stringify(data));
           navigate('/showAllCourses');
         } else {
           alert('Please enter correct details');

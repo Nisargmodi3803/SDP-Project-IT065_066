@@ -17,7 +17,7 @@ const AllCourses = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:4200/showCourses');
+        const response = await fetch('http://localhost:5501/showCourses');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -33,7 +33,7 @@ const AllCourses = () => {
 
   const handleDelete = async (courseId) => {
     try {
-      const response = await fetch(`http://localhost:4150/deleteCourse/${courseId}`, {
+      const response = await fetch(`http://localhost:5501/deleteCourse/${courseId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
@@ -59,7 +59,7 @@ const AllCourses = () => {
 
   const handleUpdateFormSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:4160/updateCourse/${selectedCourse._id}`, {
+      const response = await fetch(`http://localhost:5501/updateCourse/${selectedCourse._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
