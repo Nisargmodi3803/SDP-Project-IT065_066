@@ -4,7 +4,9 @@
   "main": "xyz.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node java"
+    "start": "node java",
+    "dev":"nodemon index.js",
+    "build":"npm i"
   },
   "keywords": [],
   "author": "",
