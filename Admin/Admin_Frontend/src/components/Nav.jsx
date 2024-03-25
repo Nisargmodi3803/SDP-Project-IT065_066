@@ -18,7 +18,7 @@ const Nav = () => {
       <div className="container">
         <div className="logo">
           <img src={logoImage} alt="Logo" className="logo-image" />
-          <span className="website-name">Learner's</span>
+          <span className="website-name">LearnerEase</span>
         </div>
         <ul className="nav-menu">
           {isLoggedIn ? (
