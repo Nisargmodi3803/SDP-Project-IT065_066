@@ -27,7 +27,7 @@ export default function SearchCourse() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5501/showCourses');
+        const response = await fetch('https://sdp-project-it065-066-11.onrender.com/showCourses');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -44,7 +44,7 @@ export default function SearchCourse() {
   const handleSearch = async () => {
     try {
       setIsSearching(true);
-      const response = await fetch('http://localhost:5501/searchCourse', {
+      const response = await fetch('https://sdp-project-it065-066-11.onrender.com/searchCourse', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export default function SearchCourse() {
 
   const handleDelete = async (courseId) => {
     try {
-      const response = await fetch(`http://localhost:5501/deleteCourse/${courseId}`, {
+      const response = await fetch(`https://sdp-project-it065-066-11.onrender.com/deleteCourse/${courseId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
@@ -91,7 +91,7 @@ export default function SearchCourse() {
 
   const handleUpdateFormSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:5501/updateCourse/${selectedCourse._id}`, {
+      const response = await fetch(`https://sdp-project-it065-066-11.onrender.com/updateCourse/${selectedCourse._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -16,7 +16,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      let result = await fetch('http://localhost:5501/login', {
+      let result = await fetch('https://sdp-project-it065-066-11.onrender.com/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: {

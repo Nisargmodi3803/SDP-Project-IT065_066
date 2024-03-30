@@ -16,7 +16,7 @@ export default function AddCourse() {
 
   const handleLogin = async () => {
     try {
-      const result = await fetch('http://localhost:5501/addCourse', {
+      const result = await fetch('https://sdp-project-it065-066-11.onrender.com/addCourse', {
         method: 'POST',
         body: JSON.stringify({ name, link, description, image }),
         headers: {
