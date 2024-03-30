@@ -21,7 +21,7 @@ const AllCourses = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5500/showCourses');
+        const response = await fetch('https://sdp-project-it065-066-9.onrender.com/showCourses');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -42,7 +42,7 @@ const AllCourses = () => {
     const studentId = storedStudentDetails._id;
 
     try {
-      const enrollResponse = await fetch(`http://localhost:5500/enrollCourse/${studentId}`, {
+      const enrollResponse = await fetch(`https://sdp-project-it065-066-9.onrender.com/enrollCourse/${studentId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

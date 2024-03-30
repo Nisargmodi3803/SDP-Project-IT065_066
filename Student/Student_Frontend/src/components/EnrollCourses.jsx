@@ -24,7 +24,7 @@ const EnrollCourses = () => {
             try {
                 const storedStudentDetails = JSON.parse(localStorage.getItem('student'));
                 const studentId = storedStudentDetails._id;
-                const response = await fetch(`http://localhost:5500/showEndrolledCourses/${studentId}`);
+                const response = await fetch(`https://sdp-project-it065-066-9.onrender.com/showEndrolledCourses/${studentId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
@@ -47,7 +47,7 @@ const EnrollCourses = () => {
         const studentId = storedStudentDetails._id;
 
         try {
-            const response = await fetch(`http://localhost:5500/unEnrollCourse/${studentId}`, {
+            const response = await fetch(`https://sdp-project-it065-066-9.onrender.com/unEnrollCourse/${studentId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

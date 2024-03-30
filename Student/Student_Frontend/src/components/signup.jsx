@@ -23,7 +23,7 @@ export default function Signup() {
 
     const collectData = async () => {
         if (password.match(reEnterPassword)) {
-            let result = await fetch('http://localhost:5500/register', {
+            let result = await fetch('https://sdp-project-it065-066-9.onrender.com/register', {
                 method: 'post',
                 body: JSON.stringify({ email, password,name, phoneNo, city, state }),
                 headers: {
