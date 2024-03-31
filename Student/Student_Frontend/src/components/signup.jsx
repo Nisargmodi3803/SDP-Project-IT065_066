@@ -3,7 +3,7 @@ import './signup.css'
 import { useNavigate } from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { app } from './firebase';
+import app from './firebase';
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
@@ -54,7 +54,7 @@ export default function Signup() {
             setEmail(data.user.email);
         });
 
-        let result = await fetch('https://sdp-project-it065-066-9.onrender.com/register', {
+        let result = await fetch('https://sdp-project-it065-066-9.onrender.com/signInWithGoogle', {
             method: 'post',
             body: JSON.stringify({ email }),
             headers: {
