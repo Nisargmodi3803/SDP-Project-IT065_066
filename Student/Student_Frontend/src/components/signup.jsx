@@ -105,7 +105,7 @@ export default function Signup() {
                             onChange={(e) => setPhoneNo(e.target.value)}
                         /><br />
                         <button onClick={collectData} type='button'>Sign up</button>
-                        <div className="google-btn" onClick={signInWithGoogle}>
+                        <div className="google-btn1" onClick={signInWithGoogle}>
                             <img src="http://1000logos.net/wp-content/uploads/2016/11/New-Google-Logo.jpg" alt="Google Logo" width="20" height="20" />
                             <span>Sign In with Google</span>
                         </div>
