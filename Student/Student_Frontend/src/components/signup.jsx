@@ -104,22 +104,11 @@ export default function Signup() {
                             value={phoneNo}
                             onChange={(e) => setPhoneNo(e.target.value)}
                         /><br />
-                        <input
-                            className='inputBox'
-                            type='text'
-                            placeholder='City'
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        /><br />
-                        <input
-                            className='inputBox'
-                            type='text'
-                            placeholder='State'
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                        /><br />
                         <button onClick={collectData} type='button'>Sign up</button>
-                        <button onClick={signInWithGoogle} type='button'>Sign In with Google</button>
+                        <div className="google-btn" onClick={signInWithGoogle}>
+                            <img src="http://1000logos.net/wp-content/uploads/2016/11/New-Google-Logo.jpg" alt="Google Logo" width="20" height="20" />
+                            <span>Sign In with Google</span>
+                        </div>
                     </form>
                 </div>
             </div>

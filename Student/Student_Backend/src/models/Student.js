@@ -7,8 +7,6 @@ const studentSchema = new mongoose.Schema(
         password: String,
         name: String,
         phoneNo: String,
-        city: String,
-        state: String,
         image: String,
         enrolledCourses: [{
             name: String,

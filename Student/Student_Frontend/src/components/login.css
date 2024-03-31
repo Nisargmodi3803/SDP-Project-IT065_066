@@ -60,3 +60,24 @@
 .wrapper button:hover {
     background-color: #e1e6e7; 
 }
+
+.google-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.google-btn img {
+    margin-right: 10px;
+}
+
+.google-btn:hover {
+    background-color: #f5f5f5;
+}
+
