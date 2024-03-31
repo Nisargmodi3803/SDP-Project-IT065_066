@@ -50,25 +50,31 @@ export default function Signup() {
     }
 
     const signInWithGoogle = async () => {
-        signInWithPopup(auth, provider).then((data) => {
-            setEmail(data.user.email);
-        });
+        try {
+            const { user } = await signInWithPopup(auth, provider);
+            setEmail(user.email);
 
-        let result = await fetch('https://sdp-project-it065-066-9.onrender.com/signInWithGoogle', {
-            method: 'post',
-            body: JSON.stringify({ email }),
-            headers: {
-                'content-type': 'application/json'
-            },
-        });
+            const result = await fetch('https://sdp-project-it065-066-9.onrender.com/signInWithGoogle', {
+                method: 'post',
+                body: JSON.stringify({ email: user.email }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
-        result = await result.json()
-        console.log(result)
+            const data = await result.json();
+            console.log(data);
 
-        localStorage.setItem("student", JSON.stringify(result.result))
-        localStorage.setItem("token", JSON.stringify(result.auth))
-        navigate('/home')
-    }
+            localStorage.setItem('student', JSON.stringify(data.result));
+            localStorage.setItem('token', JSON.stringify(data.auth));
+            navigate('/home');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error signing in with Google');
+        }
+    };
+
+
 
     return (
         <div className='container-signup'>

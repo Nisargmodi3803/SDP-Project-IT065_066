@@ -162,20 +162,22 @@ app.post("/searchCourse", async (req, resp) => {
 
 
 // SignIn with Google
-app.post("/signInWithGoogle",async (req,resp)=>
-{
-    let stud = new student(req.body.email)
-    let result = await stud.save()
-    result = result.toObject()
-    delete result.password
-    Jwt.sign({ result }, jwtKey, { expiresIn: "2h" }, (err, token) => {
-        if (err) {
-            resp.send({ result: "Something went wrong,Please try after sometimes!!!" })
+app.post("/signInWithGoogle", async (req, res) => {
+    try {
+        const { email } = req.body;
+        let student = await Student.findOne({ email });
+        if (!student) {
+            // If the student does not exist, create a new student
+            student = new Student({ email });
+            await student.save();
         }
-        resp.send({ result, auth: token })
-    })
-    resp.send(result)
-})
+        const token = jwt.sign({ student }, jwtKey, { expiresIn: "2h" });
+        res.status(200).json({ student, auth: token });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
 
 
 // Start the server
