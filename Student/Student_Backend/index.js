@@ -75,7 +75,7 @@ app.post("/register", async (req, res) => {
     const { name, email, password,phoneNo,city,state } = req.body;
     if (name && email && password) {
         try {
-            let stud = new Student({ name, email, password: bcrypt.hashSync(password, 10), phoneNo,city,state });
+            let stud = new Student({ name, email, password: bcrypt.hashSync(password, 10), phoneNo });
             let result = await stud.save();
             result = result.toObject();
             delete result.password;
