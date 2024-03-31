@@ -54,7 +54,7 @@ export default function Signup() {
             });
 
             const data = await response.json();
-            localStorage.setItem('student', JSON.stringify(data.result || {}));
+            localStorage.setItem('student', JSON.stringify(data.student || {}));
             localStorage.setItem('token', JSON.stringify(data.auth || ''));
             navigate('/home');
         } catch (error) {

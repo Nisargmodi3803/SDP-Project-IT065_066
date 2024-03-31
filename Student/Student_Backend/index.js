@@ -172,7 +172,7 @@ app.post("/signInWithGoogle", async (req, res) => {
             await student.save();
         }
         const token = jwt.sign({ student }, jwtKey, { expiresIn: "2h" });
-        res.status(200).json({ student, auth: token });
+        res.status(200).json({ student:student, auth: token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });
