@@ -13,6 +13,7 @@
     "axois": "^0.0.1-security",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.2",
+    "firebase": "^10.10.0",
     "jsonwebtoken": "^9.0.2",
     "primereact": "^10.4.0",
     "react": "^18.2.0",
