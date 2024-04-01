@@ -43,6 +43,8 @@ const AllCourses = () => {
         throw new Error('Failed to delete course');
       }
       setCourses(courses.filter(course => course._id !== courseId));
+      alert("Course Delete successfully!!!")
+      window.location.reload();
     } catch (error) {
       console.error('Error deleting course:', error);
     }
@@ -79,6 +81,8 @@ const AllCourses = () => {
       const updatedCourses = await response.json();
       setCourses(updatedCourses);
       handleUpdateFormClose();
+      alert("Course update successfully!!!")
+      window.location.reload();
     } catch (error) {
       console.error('Error updating course:', error);
     }
