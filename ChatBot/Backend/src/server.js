@@ -7,14 +7,14 @@ const {
 } = require("@google/generative-ai");
 
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 
-const MODEL_NAME = "gemini-1.0-pro";
-const API_KEY = "AIzaSyBJQ6Vw85vj9tQK5UI2-uWClINgjmt1uHc";
+const MODEL_NAME = "gemini-pro";
+const API_KEY = "AIzaSyBJQ6Vw85vj9tQK5UI2-uWClINgjmt1uHc"; // Replace with your actual API key
 
 async function runChat(inputMessage) {
     const genAI = new GoogleGenerativeAI(API_KEY);
@@ -59,8 +59,8 @@ async function runChat(inputMessage) {
                 parts: [{ text: "Placeholder response to end the conversation" }],
             },
             {
-                role: "user",
-                parts: [{ text: "Thank you for the information." }], // Ending with a user role
+                role: "function",
+                parts: [{ text: "Function response to end the conversation" }], // Ending with a function response
             },
         ],
     });

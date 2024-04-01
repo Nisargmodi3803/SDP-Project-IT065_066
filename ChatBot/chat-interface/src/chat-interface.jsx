@@ -13,24 +13,32 @@ function ChatInterface() {
     e.preventDefault();
     if (userInput.trim() === '') return;
 
-    const response = await fetch('/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message: userInput }),
-    });
+    try {
+      const response = await fetch('http://localhost:4000/chat', { // Make sure server is running on port 4000
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userInput }),
+      });
 
-    const data = await response.json();
-    const botResponse = data.message;
+      if (!response.ok) {
+        throw new Error('Failed to fetch');
+      }
 
-    setChatHistory((prevHistory) => [
-      ...prevHistory,
-      { text: userInput, sender: 'user' },
-      { text: botResponse, sender: 'bot' },
-    ]);
+      const data = await response.json();
+      const botResponse = data.message;
 
-    setUserInput('');
+      setChatHistory((prevHistory) => [
+        ...prevHistory,
+        { text: userInput, sender: 'user' },
+        { text: botResponse, sender: 'bot' },
+      ]);
+
+      setUserInput('');
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
