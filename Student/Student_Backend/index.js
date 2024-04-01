@@ -72,7 +72,7 @@ app.post("/login", async (req, res) => {
 
 // User Registration
 app.post("/register", async (req, res) => {
-    const { name, email, password,phoneNo,city,state } = req.body;
+    const { name, email, password,phoneNo} = req.body;
     if (name && email && password) {
         try {
             let stud = new Student({ name, email, password: bcrypt.hashSync(password, 10), phoneNo });
