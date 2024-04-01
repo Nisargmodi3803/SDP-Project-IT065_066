@@ -4,8 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
-import { Button, CardActionArea, CardActions, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@mui/material';
-import './AllCourses.css'
+import { Button, CardActionArea, CardActions, Dialog, DialogTitle, DialogContent, DialogActions, TextField, CircularProgress } from '@mui/material';
+import './AllCourses.css';
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -13,6 +13,7 @@ const AllCourses = () => {
   const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
   const [updatedCourseName, setUpdatedCourseName] = useState('');
   const [updatedCourseDescription, setUpdatedCourseDescription] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +26,8 @@ const AllCourses = () => {
         setCourses(data.courses);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -83,8 +86,10 @@ const AllCourses = () => {
 
   return (
     <div className="course-container">
-      {Array.isArray(courses) && courses.length > 0 ? (
-        courses.map((course) => ( //If any course availabe then this
+      {isLoading ? (
+        <CircularProgress />
+      ) : Array.isArray(courses) && courses.length > 0 ? (
+        courses.map((course) => (
           <Courses
             key={course._id}
             id={course._id}
@@ -95,7 +100,7 @@ const AllCourses = () => {
             handleUpdate={handleUpdate}
           />
         ))
-      ) : ( // Else This
+      ) : (
         <Typography>No courses found</Typography>
       )}
 
