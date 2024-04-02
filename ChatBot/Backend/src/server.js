@@ -54,14 +54,6 @@ async function runChat(inputMessage) {
                 role: "user",
                 parts: [{ text: inputMessage }],
             },
-            {
-                role: "model",
-                parts: [{ text: "Placeholder response to end the conversation" }],
-            },
-            {
-                role: "function",
-                parts: [{ text: "Function response to end the conversation" }], // Ending with a function response
-            },
         ],
     });
 

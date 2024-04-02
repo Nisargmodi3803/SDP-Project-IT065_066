@@ -14,7 +14,7 @@ function ChatInterface() {
     if (userInput.trim() === '') return;
 
     try {
-      const response = await fetch('http://localhost:4000/chat', { // Make sure server is running on port 4000
+      const response = await fetch('http://localhost:4000/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

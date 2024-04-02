@@ -1,4 +1,0 @@
-name : Spring Boot & Spring Data JPA
-Link : https://youtu.be/5rNk7m_zlAg?si=gYqiLd1gb3l1AB40
-image : https://imgs.search.brave.com/m50WAr5gLCTyMnrZuw1dNr2KB9__k0LzobbZ4yrz1H8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBj/bWFnLmNvbS9pbWFn/ZXJ5L3Jldmlld3Mv/MDF0UFhDbGcyV2pM/YW1RelNjcGxIM3kt/MTUuZml0X3NjYWxl/LnNpemVfNzYweDQy/Ny52MTYyNzY3MDI4/MS5wbmc
-description: This is Spring Boot Course by Free Code Camp
